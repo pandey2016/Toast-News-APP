@@ -40,29 +40,30 @@ public class MainActivity extends AppCompatActivity {
 
         newsItemList= new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest request =new StringRequest("https://www.geo.tv/rss/1/0", new Response.Listener<String>() {
+        StringRequest request =new StringRequest("http://indiatoday.intoday.in/rss/article.jsp", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Document doc = Jsoup.parse(response);
                 Elements itemElements=doc.getElementsByTag("item");
-                Log.i("mytag","items found :"+itemElements.size());
+                //Log.i("mytag","items found :"+itemElements.size());
 
                 for(int i=0;i<itemElements.size();i++){
                     //Getting Elements
                     Element item=itemElements.get(i);
                     //Getting Child
                     String title=removeCdata(item.child(0).text());
-                    String pubdate=removeCdata(item.child(2).text());
-                    String guid=removeCdata(item.child(3).text());
-                    String description=removeCdata(item.child(4).text());
+                    String guid=removeCdata(item.child(1).text());
+                    String description=removeCdata(item.child(2).text());
+                    String pubdate=item.getElementsByTag("pubDate").text();
+                    Document doc3 = Jsoup.parse(description);
+                    String ownText = doc3.body().ownText();
                     //making child document to use child kaa child
                     Document doc2=Jsoup.parse(description);
-                    String img=doc2.getElementsByTag("img").first().attr("src");
-                    String txt=doc2.getElementsByTag("p").text();
-                    //
+                    String img=doc2.getElementsByTag("img").attr("src");
+                    Log.i("yoooooooo","khj"+pubdate);
                     NewsItem news=new NewsItem();
                     news.title=title;
-                    news.description=txt;
+                    news.description=ownText;
                     news.link=guid;
                     news.imgpath=img;
                     news.date=pubdate;

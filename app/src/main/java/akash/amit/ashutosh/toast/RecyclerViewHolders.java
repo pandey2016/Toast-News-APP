@@ -11,8 +11,8 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
 
     public ImageView iv1;
     public TextView tvTitle;
-    public TextView tvDate;
-    public TextView tvDescription;
+    TextView tvDate;
+    TextView tvDescription;
 
     public RecyclerViewHolders(View itemView) {
         super(itemView);

@@ -11,6 +11,7 @@ public class NewsItem{
     String imgpath;
     String description;
     String date;
+    //String date;
 
     @Override
     public String toString() {
