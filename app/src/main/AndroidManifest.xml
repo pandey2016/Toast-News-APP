@@ -6,10 +6,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/aq"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
@@ -20,12 +20,12 @@
 
         </activity>
         <activity android:name=".webView" />
-        <activity android:name=".IndiaToday" />
-        <activity android:name=".indianExpress" />
-        <activity android:name=".IndiaTvNews" />
-        <activity android:name=".IBNLive" />
-        <activity android:name=".OneIndiaNews" />
-        <activity android:name=".HindustanTimes" />
+        <activity android:name=".IndiaToday" android:theme="@style/AppTheme" />
+        <activity android:name=".indianExpress"  android:theme="@style/AppTheme"/>
+        <activity android:name=".IndiaTvNews"  android:theme="@style/AppTheme"/>
+        <activity android:name=".IBNLive" android:theme="@style/AppTheme"/>
+        <activity android:name=".OneIndiaNews" android:theme="@style/AppTheme" />
+        <activity android:name=".HindustanTimes"  android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

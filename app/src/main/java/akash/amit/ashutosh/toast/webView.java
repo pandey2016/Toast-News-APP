@@ -11,6 +11,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 public class webView extends AppCompatActivity {
     @Override
@@ -33,6 +34,7 @@ public class webView extends AppCompatActivity {
             @Override
             public void run() {
                 progress.cancel();
+                Toast.makeText(webView.this, "loading...", Toast.LENGTH_LONG).show();
             }
         };
 

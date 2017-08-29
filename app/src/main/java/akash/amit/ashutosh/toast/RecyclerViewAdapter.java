@@ -34,14 +34,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         NewsItem currentNews=newsList.get(position);
 
         if ((currentNews.imgpath).isEmpty()) {
-            holder.iv1.setImageResource(R.drawable.a11);
+            holder.iv1.setImageResource(R.drawable.a);
         } else{
-            Picasso.with(context).load(currentNews.imgpath).into(holder.iv1);
+            Picasso.with(context).load(currentNews.imgpath).placeholder(R.drawable.a).into(holder.iv1);
         }
         Log.e("message", currentNews.imgpath);
         holder.tvTitle.setText(currentNews.title);
         holder.tvDate.setText(currentNews.date);
         holder.tvDescription.setText(currentNews.description);
+
 
     }
 

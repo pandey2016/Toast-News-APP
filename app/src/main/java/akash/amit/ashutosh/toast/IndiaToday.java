@@ -6,7 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -30,7 +33,17 @@ public class IndiaToday extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_india_today);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ImageView iv= (ImageView) findViewById(R.id.imageView2);
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                overridePendingTransition(R.anim.enter, R.anim.exit);
 
+            }
+        });
         final ProgressDialog progress = new ProgressDialog(this);
         progress.setTitle("Breaking News");
         progress.setMessage("connecting...");
@@ -40,6 +53,7 @@ public class IndiaToday extends AppCompatActivity {
             @Override
             public void run() {
                 progress.cancel();
+                Toast.makeText(IndiaToday.this, "loading...", Toast.LENGTH_SHORT).show();
             }
         };
         Handler pdCanceller = new Handler();

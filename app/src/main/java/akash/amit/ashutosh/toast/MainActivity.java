@@ -1,10 +1,12 @@
 package akash.amit.ashutosh.toast;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -42,9 +44,19 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        ImageView img= (ImageView) findViewById(R.id.imageV);
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -92,6 +104,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
         queue.add(request);
+        CardView cv= (CardView) findViewById(R.id.card_view);
+        cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,IBNLive.class);
+                startActivity(intent);
+            }
+        });
         //   HINDUSTAN TIMES
         //RequestQueue queue2 = Volley.newRequestQueue(this);
         StringRequest request2 =new StringRequest("http://www.hindustantimes.com/rss/india/rssfeed.xml", new Response.Listener<String>() {
@@ -114,6 +134,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
         queue.add(request2);
+        CardView cv2= (CardView) findViewById(R.id.card_view2);
+        cv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,HindustanTimes.class);
+                startActivity(intent);
+            }
+        });
 
 //INDIAN EXPRESSS
         //RequestQueue queue3 = Volley.newRequestQueue(this);
@@ -137,6 +165,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
         queue.add(request3);
+        CardView cv3= (CardView) findViewById(R.id.card_view3);
+        cv3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,indianExpress.class);
+                startActivity(intent);
+            }
+        });
 
 //INDIA TODAY
         RequestQueue queue4 = Volley.newRequestQueue(this);
@@ -151,7 +187,11 @@ public class MainActivity extends AppCompatActivity
                 Document doc2=Jsoup.parse(description);
                 String img=doc2.getElementsByTag("img").attr("src");
                 ImageView iv4= (ImageView) findViewById(R.id.imageview4);
-                Picasso.with(MainActivity.this).load(img).placeholder(R.drawable.a).into(iv4);
+                if ((img).isEmpty()) {
+                    iv4.setImageResource(R.drawable.a);
+                } else{
+                    Picasso.with(MainActivity.this).load(img).into(iv4);
+                }
                 TextView tv4= (TextView) findViewById(R.id.textview4);
                 tv4.setText(title);
             }
@@ -162,7 +202,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
         queue4.add(request4);
-
+        CardView cv4= (CardView) findViewById(R.id.card_view4);
+        cv4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,IndiaToday.class);
+                startActivity(intent);
+            }
+        });
 //india tv news
         //RequestQueue queue5 = Volley.newRequestQueue(this);
         StringRequest request5 =new StringRequest("http://www.indiatvnews.com/rssfeed/india.xml", new Response.Listener<String>() {
@@ -185,7 +232,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
         queue.add(request5);
-
+        CardView cv5= (CardView) findViewById(R.id.card_view5);
+        cv5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,IndiaTvNews.class);
+                startActivity(intent);
+            }
+        });
 //ONE INDIA
        // RequestQueue queue6 = Volley.newRequestQueue(this);
         StringRequest request6 =new StringRequest("http://www.oneindia.com/rss/news-india-fb.xml", new Response.Listener<String>() {
@@ -208,6 +262,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
         queue.add(request6);
+        CardView cv6= (CardView) findViewById(R.id.card_view6);
+        cv6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,OneIndiaNews.class);
+                startActivity(intent);
+            }
+        });
     }
     String removeCdata(String data){
         data =data.replace("<![CDATA["," ");
@@ -242,7 +304,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -254,9 +316,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        /*if (id == R.id.action_refresh) {
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -267,18 +332,37 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_1) {
+            Intent intent=new Intent(MainActivity.this,IBNLive.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_2) {
+            Intent intent=new Intent(MainActivity.this,HindustanTimes.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_3) {
+            Intent intent=new Intent(MainActivity.this,indianExpress.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_4) {
+            Intent intent=new Intent(MainActivity.this,IndiaToday.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_5) {
+            Intent intent=new Intent(MainActivity.this,IndiaTvNews.class);
+            startActivity(intent);
 
+        } else if (id == R.id.nav_6) {
+            Intent intent=new Intent(MainActivity.this,OneIndiaNews.class);
+            startActivity(intent);
+
+        }
+        else if (id == R.id.nav_7) {
+            Intent i=new Intent(android.content.Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(android.content.Intent.EXTRA_SUBJECT,"Thanks for Sharing");
+            i.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id="+getApplicationContext().getPackageName()+"");
+            startActivity(Intent.createChooser(i,"Share via"));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

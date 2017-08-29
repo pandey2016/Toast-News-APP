@@ -41,6 +41,7 @@ public class indianExpress extends AppCompatActivity {
             @Override
             public void run() {
                 progress.cancel();
+                Toast.makeText(indianExpress.this, "loading...", Toast.LENGTH_SHORT).show();
             }
         };
         Handler pdCanceller = new Handler();
