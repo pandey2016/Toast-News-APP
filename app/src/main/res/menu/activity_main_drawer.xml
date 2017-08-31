@@ -20,14 +20,24 @@
         <item
             android:id="@+id/nav_6"
             android:title="ONeIndia News" />
+        <item
+            android:id="@+id/nav_9"
+            android:title="BabaTV" />
     </group>
 
     <item android:title="Communicate">
         <menu>
+
+            <item
+                android:id="@+id/nav_8"
+                android:icon="@drawable/admin"
+                android:title="Admin Panel" />
             <item
                 android:id="@+id/nav_7"
                 android:icon="@drawable/ic_menu_share"
                 android:title="share" />
+
+
         </menu>
     </item>
 

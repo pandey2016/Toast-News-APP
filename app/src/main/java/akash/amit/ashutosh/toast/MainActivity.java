@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Request Error", Toast.LENGTH_SHORT).show();
+
             }
         });
         queue.add(request);
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Request Error", Toast.LENGTH_SHORT).show();
+
             }
         });
         queue.add(request2);
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Request Error", Toast.LENGTH_SHORT).show();
+
             }
         });
         queue.add(request3);
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Request Error", Toast.LENGTH_SHORT).show();
+
             }
         });
         queue4.add(request4);
@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Request Error", Toast.LENGTH_SHORT).show();
+
             }
         });
         queue.add(request5);
@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Request Error", Toast.LENGTH_SHORT).show();
+
             }
         });
         queue.add(request6);
@@ -364,7 +364,14 @@ public class MainActivity extends AppCompatActivity
             i.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id="+getApplicationContext().getPackageName()+"");
             startActivity(Intent.createChooser(i,"Share via"));
         }
-
+        else if (id == R.id.nav_8) {
+            Intent intent=new Intent(MainActivity.this,PhoneAuth.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_9) {
+            Intent intent=new Intent(MainActivity.this,BabaTV.class);
+            startActivity(intent);
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

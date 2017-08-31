@@ -1,0 +1,117 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_100"
+    android:orientation="vertical"
+    android:backgroundTint="#f7e1d3">
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/phone_auth_fields"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="572dp"
+            android:orientation="vertical"
+            android:weightSum="3.0">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/linearLayout">
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_start_verification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.13"
+                android:text="Send Verification code"
+                android:textColor="#fff"
+                android:background="#ea5850"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <Button
+                android:id="@+id/button_verify_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/verify_phone_auth"
+                android:textColor="#000"
+                android:background="#89b594"
+                android:layout_weight="0.19"
+                android:layout_above="@+id/button_start_verification"
+                android:layout_alignRight="@+id/field_verification_code"
+                android:layout_alignEnd="@+id/field_verification_code"
+                android:translationZ="5dp" />
+
+            <Button
+                android:id="@+id/button_resend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.15"
+                android:text="@string/resend_phone_auth"
+                android:textColor="#000"
+                android:background="#3fac54"
+                android:layout_above="@+id/button_start_verification"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:translationZ="5dp" />
+
+            <EditText
+                android:id="@+id/field_verification_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_verification_code"
+                android:inputType="number"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:layout_toLeftOf="@+id/button_resend"
+                android:layout_alignLeft="@+id/field_phone_number"
+                android:layout_alignStart="@+id/field_phone_number"
+                android:translationZ="10dp" />
+
+            <EditText
+                android:id="@+id/field_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="   Enter Phone Number   "
+                android:gravity="center"
+                android:inputType="phone"
+                android:layout_marginTop="192dp"
+                android:layout_below="@+id/linearLayout"
+                android:layout_toLeftOf="@+id/button_resend"
+                android:layout_toStartOf="@+id/button_resend"
+                android:translationZ="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="login with Mobile"
+                android:id="@+id/textView_otp"
+                android:layout_marginTop="76dp"
+                android:layout_below="@+id/linearLayout"
+                android:padding="10dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:translationZ="10dp" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

@@ -24,9 +24,9 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
     Context context;
     public RecyclerViewHolders(View itemView, List<NewsItem> newsList) {
         super(itemView);
-        this.newsList = newsList;
-        context=itemView.getContext();
-        itemView.setOnClickListener(this);
+         this.newsList = newsList;
+         context=itemView.getContext();
+         itemView.setOnClickListener(this);
          iv1= (ImageView) itemView.findViewById(R.id.imageview_1);
          tvTitle= (TextView) itemView.findViewById(R.id.textview_1);
          tvDate= (TextView) itemView.findViewById(R.id.textview_2);
